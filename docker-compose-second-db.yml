@@ -1,0 +1,19 @@
+services:
+  postgres2:
+    image: postgres
+    environment:
+      POSTGRES_HOST:  ${DB_HOST2}
+      POSTGRES_PASSWORD: ${DB_PASSWORD2}
+      POSTGRES_USERNAME: ${DB_USERNAME2}
+      POSTGRES_DB: ${DB_NAME2} 
+    ports:
+      - 5433:5432
+
+  adminer2:
+    image: adminer
+    restart: always
+    depends_on:
+      - postgres2
+    ports:
+      - 8081:8080
+
